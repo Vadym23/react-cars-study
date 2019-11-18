@@ -1,0 +1,14 @@
+/*body {
+  margin: 0;
+  background: linear-gradient(135deg, rgba(110, 211, 149, 1) 0%, rgba(110, 211, 149, 1) 40%, rgba(39, 167, 166, 1) 100%);
+  background-size: 100%;
+  background-attachment: fixed;
+}*/
+
+.car {
+	display: inline-block;
+	border: 2px solid #ccc;
+	box-shadow: 2px 2px 1px #eee;
+	padding: 10px;
+	margin-right: 10px;
+}
