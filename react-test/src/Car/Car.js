@@ -1,16 +1,9 @@
 import React from 'react';
+import './Car.css'
 
 export default (props) => (
 	// задаем рамку, для того чтобы отличать каждый елемент машины от другой
-	<div style = {{
-		border: '1px solid #ccc',
-		marginBottom: '10px',
-		display: 'block',
-		padding: '10px',
-		// Добавили boxShadow и borderRadius
-		boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .14)',
-		borderRadius: '5px'
-	}}>
+	<div className = "Car">
 	<h3>Car: {props.name}</h3>
 	<h4>Model: {props.model}</h4>
 	<p>Year: <strong>{props.year}</strong></p>
