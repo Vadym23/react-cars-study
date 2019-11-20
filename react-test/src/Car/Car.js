@@ -1,21 +1,21 @@
 import React from 'react'
 import Radium from 'radium'
-import './Car.css'
+import classes from './Car.css'
 
 const Car = props => {
 	// Создаем динамический класс. Реализация задачи с проверкой значений в строке.
-	const inputClasses = ['input']
+	const inputClasses = [classes.input]
 	// Проверяем если в props.name что-то лежит, строка не равна пустой строке, то будем добавлять
 	// массив inputclasses
 	if (props.name !== '' ) {
-		inputClasses.push('green')
+		inputClasses.push(classes.green)
 	} else {
-		inputClasses.push('red')
+		inputClasses.push(classes.red)
 	}
 
 	// Проверка на длину и применения стиля 
 	if (props.name.length > 4) {
-		inputClasses.push('bold')
+		inputClasses.push(classes.bold)
 	}
 
 	const style = {
@@ -31,7 +31,7 @@ const Car = props => {
 	// Добавляем в компонент тело ф-ции return 
 	return (
 	// задаем рамку, для того чтобы отличать каждый елемент машины от другой
-	<div className = "Car" style = {style}>
+	<div className = {classes.Car} style = {style}>
 	<h3>Car: {props.name}</h3>
 	<h4>Model: {props.model}</h4>
 	<p>Year: <strong>{props.year}</strong></p>
