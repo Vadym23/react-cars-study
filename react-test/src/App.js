@@ -5,7 +5,7 @@
 // import registerServiceWorker from '.registerServiceWorker';
 // // import logo from './logo.svg';
 import React, { Component } from 'react';
-import './App.scss';
+import './App.css';
 import Car from './Car/Car.js';
 
 class App extends Component {
@@ -23,9 +23,7 @@ class App extends Component {
       showCars: false
     }
   }
-
   
-    
   toggleCarsHandler = () => {
       this.setState ({
       showCars: !this.state.showCars
@@ -60,7 +58,20 @@ class App extends Component {
     this.setState({cars})
   }
 
+  // Жизненные циклы
+  // 1-й жизненный цикл
+  componentWillMount(){
+    console.log('App componentWillMount')
+  }
+
+  // 2-й жизненный цикл
+  componentDidMount(){
+    console.log('App componentDidMount')
+  }
+
+  // 3-й жизненный цикл м-д .render()
   render() {
+    console.log('App render()')
     const divStyle = {
       textAlign: 'center'
     }
@@ -91,9 +102,17 @@ class App extends Component {
       {/* <h1>{this.state.pageTitle}</h1> */}
       <h1>{this.props.title}</h1>
 
-
+      {/* <div className = {classes.Car} style = {style}> */}
       <button 
-        className = {'AppButton'}
+        className = {'AppButton'} 
+        style = {{
+          padding: '8px 10px',
+          bottom: '1px solid #ccc',
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          outLine: 'none',
+          backgroundColor: '#f0ff1e'
+        }}
         onClick = {this.toggleCarsHandler} 
       >Toggle cars</button>
        {/* Добавили блок и стилизовали */}
