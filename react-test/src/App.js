@@ -5,7 +5,7 @@
 // import registerServiceWorker from '.registerServiceWorker';
 // // import logo from './logo.svg';
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Car from './Car/Car.js';
 
 class App extends Component {
@@ -85,7 +85,10 @@ class App extends Component {
       <h1>{this.state.pageTitle}</h1>
 
 
-      <button onClick = {this.toggleCarsHandler} >Toggle cars</button>
+      <button 
+        className = {'AppButton'}
+        onClick = {this.toggleCarsHandler} 
+      >Toggle cars</button>
        {/* Добавили блок и стилизовали */}
         <div style = {{
           width: 400,
