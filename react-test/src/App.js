@@ -10,15 +10,21 @@ import Car from './Car/Car.js';
 
 class App extends Component {
   
-  state = {
-    cars: [
-      {name: 'Ford', model: 'Focus', year: 2018},
-      {name: 'Audi', model: 'A6', year: 2016},
-      {name: 'Mazda', model: 'RX7', year: 2010}
-    ],
-    pageTitle: 'React components',
-    showCars: false
+  // инициализируем State через м-д конструктор наследованым от компонента
+  constructor(props) {
+    super(props)
+    this.state = {
+      cars: [
+        {name: 'Ford', model: 'Focus', year: 2018},
+        {name: 'Audi', model: 'A6', year: 2016},
+        {name: 'Mazda', model: 'RX7', year: 2010}
+      ],
+      pageTitle: 'React components',
+      showCars: false
+    }
   }
+
+  
     
   toggleCarsHandler = () => {
       this.setState ({
@@ -82,7 +88,8 @@ class App extends Component {
 
     return (
       <div style = {divStyle}>
-      <h1>{this.state.pageTitle}</h1>
+      {/* <h1>{this.state.pageTitle}</h1> */}
+      <h1>{this.props.title}</h1>
 
 
       <button 
