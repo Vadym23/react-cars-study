@@ -1,9 +1,41 @@
 import React from 'react'
-import Radium from 'radium'
+// import Radium from 'radium'
 import classes from './Car.css'
 
 class Car extends React.Component {
+
+	componentWillReceiveProps(nextProps) {
+		console.log('Car componentWillReceiveProps', nextProps)
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('Car shouldComponentUpdate', nextProps, nextState)
+		return nextProps.name.trim() !==  this.props.name.trim()
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+		console.log('Car componentWillUpdate', nextProps, nextState)
+	}
+
+	// static getDerivedStateFromProps(nextProps, prevState) {
+	// 	console.log('Car getDerivedStateFromProps', nextProps, prevState)
+	// 	return prevState
+	// }
+
+	componentDidUpdate() {
+		console.log('Car componentDidUpdate')
+	}
+
+	// getSnapshotBeforeUpdate() {
+	// 	console.log('Car getSnapshotBeforeUpdate')
+	// }
+
+	componentWillUnmount() {
+		console.log('Car componentWillUnmount')
+	}
+
 	render() {
+		console.log('Car render')
 	// Создаем динамический класс. Реализация задачи с проверкой значений в строке.
 	const inputClasses = [classes.input]
 	// Проверяем если в props.name что-то лежит, строка не равна пустой строке, то будем добавлять
@@ -51,5 +83,5 @@ class Car extends React.Component {
 	</div>)
 	}
 }
-
-export default Radium(Car)
+// Radium
+export default (Car)

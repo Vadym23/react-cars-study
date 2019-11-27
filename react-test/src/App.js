@@ -4,9 +4,10 @@
 // import '.index.css';
 // import registerServiceWorker from '.registerServiceWorker';
 // // import logo from './logo.svg';
-import React, { Component } from 'react';
-import './App.css';
-import Car from './Car/Car.js';
+import React, { Component } from 'react'
+import './App.scss'
+import Car from './Car/Car'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 class App extends Component {
   
@@ -16,8 +17,8 @@ class App extends Component {
     this.state = {
       cars: [
         {name: 'Ford', model: 'Focus', year: 2018},
-        {name: 'Audi', model: 'A6', year: 2016},
-        {name: 'Mazda', model: 'RX7', year: 2010}
+        // {name: 'Audi', model: 'A6', year: 2016},
+        // {name: 'Mazda', model: 'RX7', year: 2010}
       ],
       pageTitle: 'React components',
       showCars: false
@@ -72,6 +73,12 @@ class App extends Component {
   // 3-й жизненный цикл м-д .render()
   render() {
     console.log('App render()')
+
+    // Емуляция ошибки
+    if (Math.random() > 0.7) {
+      throw new Error('Car random failed')
+    }
+
     const divStyle = {
       textAlign: 'center'
     }
@@ -81,8 +88,8 @@ class App extends Component {
     if (this.state.showCars) {
       cars = this.state.cars.map((car, index) => {
         return (
+          <ErrorBoundary key = {index}>
           <Car 
-          key = {index}
           name = {car.name}
           year = {car.year}
           // Передаем ф-цию this.deleteHandler и будем передавать с помоцью м-да bind контекст и index той
@@ -93,6 +100,7 @@ class App extends Component {
           // машины котурую нужно изменить, который берется из м-да map
           onChangeName = {event => this.onChangeName(event.target.value, index)}
           />
+          </ErrorBoundary>
         )
       }) 
     }
