@@ -1,41 +1,14 @@
 import React from 'react'
 // import Radium from 'radium'
 import classes from './Car.css'
+import withClass from '../hoc/withClass'
 
 class Car extends React.Component {
 
-	componentWillReceiveProps(nextProps) {
-		console.log('Car componentWillReceiveProps', nextProps)
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('Car shouldComponentUpdate', nextProps, nextState)
-		return nextProps.name.trim() !==  this.props.name.trim()
-	}
-
-	componentWillUpdate(nextProps, nextState) {
-		console.log('Car componentWillUpdate', nextProps, nextState)
-	}
-
-	// static getDerivedStateFromProps(nextProps, prevState) {
-	// 	console.log('Car getDerivedStateFromProps', nextProps, prevState)
-	// 	return prevState
-	// }
-
-	componentDidUpdate() {
-		console.log('Car componentDidUpdate')
-	}
-
-	// getSnapshotBeforeUpdate() {
-	// 	console.log('Car getSnapshotBeforeUpdate')
-	// }
-
-	componentWillUnmount() {
-		console.log('Car componentWillUnmount')
-	}
+	
 
 	render() {
-		console.log('Car render')
+		
 	// Создаем динамический класс. Реализация задачи с проверкой значений в строке.
 	const inputClasses = [classes.input]
 	// Проверяем если в props.name что-то лежит, строка не равна пустой строке, то будем добавлять
@@ -64,7 +37,7 @@ class Car extends React.Component {
 	// Добавляем в компонент тело ф-ции return 
 	return (
 	// задаем рамку, для того чтобы отличать каждый елемент машины от другой
-	<div className = {classes.Car} style = {style}>
+	<React.Fragment>
 	<h3>Car: {this.props.name}</h3>
 	<h4>Model: {this.props.model}</h4>
 	<p>Year: <strong>{this.props.year}</strong></p>
@@ -80,8 +53,8 @@ class Car extends React.Component {
 	/>
 	{/* Будем вызывать м-д onDelete */}
 	<button onClick = {this.props.onDelete}>Delete</button>
-	</div>)
+	</React.Fragment>)
 	}
 }
-// Radium
-export default (Car)
+// Использ. ф-цию withClass, 1й парам. это компонент, 2й парам. имя класса
+export default withClass(Car, classes.Car)
