@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 import './App.scss'
 import Car from './Car/Car'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Counter from './Counter/counter'
 
 class App extends Component {
   
@@ -75,9 +76,9 @@ class App extends Component {
     console.log('App render()')
 
     // Емуляция ошибки
-    if (Math.random() > 0.7) {
-      throw new Error('Car random failed')
-    }
+    // if (Math.random() > 0.7) {
+    //   throw new Error('Car random failed')
+    // }
 
     const divStyle = {
       textAlign: 'center'
@@ -110,10 +111,13 @@ class App extends Component {
       {/* <h1>{this.state.pageTitle}</h1> */}
       <h1>{this.props.title}</h1>
 
+      <Counter/>
+      <hr/>
       {/* <div className = {classes.Car} style = {style}> */}
       <button 
         className = {'AppButton'} 
         style = {{
+          marginTop: '20px',
           padding: '8px 10px',
           bottom: '1px solid #ccc',
           fontWeight: 'bold',
