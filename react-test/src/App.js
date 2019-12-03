@@ -10,12 +10,15 @@ import Car from './Car/Car'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Counter from './Counter/counter'
 
+export const ClickedContext = React.createContext(false)
+
 class App extends Component {
   
   // инициализируем State через м-д конструктор наследованым от компонента
   constructor(props) {
     super(props)
     this.state = {
+      clicked: false,
       cars: [
         {name: 'Ford', model: 'Focus', year: 2018},
         {name: 'Audi', model: 'A6', year: 2016},
@@ -111,8 +114,10 @@ class App extends Component {
       <div style = {divStyle}>
       {/* <h1>{this.state.pageTitle}</h1> */}
       <h1>{this.props.title}</h1>
-
-      <Counter/>
+        <ClickedContext.Provider value = {this.state.clicked}>
+          <Counter />
+        </ClickedContext.Provider>
+      
       <hr/>
       {/* <div className = {classes.Car} style = {style}> */}
       <button 
@@ -128,6 +133,9 @@ class App extends Component {
         }}
         onClick = {this.toggleCarsHandler} 
       >Toggle cars</button>
+
+        <button onClick = {() => this.setState({clicked: true})}>Change clicked</button>
+
        {/* Добавили блок и стилизовали */}
         <div style = {{
           width: 400,
