@@ -6,7 +6,18 @@ import withClass from '../hoc/withClass'
 
 class Car extends React.Component {
 
-	
+	constructor (props) {
+		super(props)
+
+		this.inputRef = React.createRef()
+	}
+
+	componentDidMount() {
+		if (this.props.index === 0) {
+			this.inputRef.current.focus();
+		}
+		
+	}
 
 	render() {
 		
@@ -45,7 +56,8 @@ class Car extends React.Component {
 	{/* Задаем input с полем текст, и событие OnChange. Будем передавать свойство смены имени машины*/}
 	{/* Даному input задаем знач. по умол. value и параметром передаем props.name*/}
 	<input  
-		type="text" 
+		ref = {this.inputRef}
+		type = "text" 
 		onChange = {this.props.onChangeName} 
 		value = {this.props.name}
 		// Передаем елементы друх массивов(green|red) через className
@@ -62,6 +74,7 @@ class Car extends React.Component {
 Car.propTypes = {
 	name: PropTypes.string.isRequired,
 	year: PropTypes.number,
+	index: PropTypes.number,
 	onChange: PropTypes.func,
 	onDelete: PropTypes.func
 }

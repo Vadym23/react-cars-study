@@ -93,6 +93,7 @@ class App extends Component {
           <Car 
           name = {car.name}
           year = {car.year}
+          index = {index}
           // Передаем ф-цию this.deleteHandler и будем передавать с помоцью м-да bind контекст и index той
           // машины которую необходимо удалить
           onDelete = {this.deteleHandler.bind(this, index)}          
