@@ -1,6 +1,7 @@
 import React from 'react'
 // import Radium from 'radium'
 import classes from './Car.css'
+import PropTypes from 'prop-types'
 import withClass from '../hoc/withClass'
 
 class Car extends React.Component {
@@ -53,8 +54,17 @@ class Car extends React.Component {
 	/>
 	{/* Будем вызывать м-д onDelete */}
 	<button onClick = {this.props.onDelete}>Delete</button>
-	</React.Fragment>)
+	</React.Fragment>
+	)
 	}
 }
+
+Car.propTypes = {
+	name: PropTypes.string.isRequired,
+	year: PropTypes.number,
+	onChange: PropTypes.func,
+	onDelete: PropTypes.func
+}
+
 // Использ. ф-цию withClass, 1й парам. это компонент, 2й парам. имя класса
 export default withClass(Car, classes.Car)
